@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: travel-planner_development
+
+test:
+  <<: *default
+  database: travel-planner_test
+
+production:
+  <<: *default
+  database: travel-planner_production
+  username: project-saurabh-lodha
+  password: <%= ENV['PROJECT-SAURABH-LODHA_DATABASE_PASSWORD'] %>
