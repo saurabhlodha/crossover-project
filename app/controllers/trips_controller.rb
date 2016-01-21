@@ -1,22 +1,17 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :update, :destroy]
+  before_action :authenticate_with_token!
 
-  # GET /trips
-  # GET /trips.json
   def index
     @trips = Trip.all
 
     render json: @trips
   end
 
-  # GET /trips/1
-  # GET /trips/1.json
   def show
     render json: @trip
   end
 
-  # POST /trips
-  # POST /trips.json
   def create
     @trip = Trip.new(trip_params)
 
@@ -27,8 +22,6 @@ class TripsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /trips/1
-  # PATCH/PUT /trips/1.json
   def update
     @trip = Trip.find(params[:id])
 
@@ -39,11 +32,8 @@ class TripsController < ApplicationController
     end
   end
 
-  # DELETE /trips/1
-  # DELETE /trips/1.json
   def destroy
     @trip.destroy
-
     head :no_content
   end
 
@@ -55,5 +45,8 @@ class TripsController < ApplicationController
 
     def trip_params
       params.require(:trip).permit(:destination, :start_date, :enddate)
+    end
+
+    def is_authorized?
     end
 end
