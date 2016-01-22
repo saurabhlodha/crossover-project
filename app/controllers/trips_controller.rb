@@ -44,7 +44,7 @@ class TripsController < ApplicationController
     end
 
     def trip_params
-      params.require(:trip).permit(:destination, :start_date, :enddate, :user_id)
+      params.require(:trip).permit(:destination, :start_date, :enddate, :comment, :user_id)
     end
 
     def is_authorized?
