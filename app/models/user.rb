@@ -3,9 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  before_create :generate_auth_token!
+  before_create :generate_auth_token
+  enum access_level: [:user, :user_manager, :admin]
+  has_many :trips
 
-  def generate_auth_token!
+  def generate_auth_token
     begin
       self.auth_token = Devise.friendly_token
     end while self.class.exists?(auth_token: auth_token)

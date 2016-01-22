@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user          = user_email.present? && User.find_by(email: user_email)
 
     if user.valid_password? user_password
-      user.generate_auth_token!
+      user.generate_auth_token
       user.save
       render json: user, status: 200
     else
@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
 
   def destroy
     user = User.find_by(auth_token: params[:id])
-    user.generate_auth_token!
+    user.generate_auth_token
     user.save
     head 204
   end

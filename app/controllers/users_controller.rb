@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
   before_action :authenticate_with_token!, only: [:update, :destroy]
+  before_action :is_authorized?, except: [:create]
 
   def index
+    head :unauthorized if current_user.user?
     @users = User.all
     render json: @users
   end
@@ -42,6 +44,10 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation, :access_level)
+    end
+
+    def is_authorized?
+      head :unauthorized unless current_user.admin? || current_user.user_manager? (current_user == @user )
     end
 end
