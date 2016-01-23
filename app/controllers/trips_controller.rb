@@ -5,7 +5,7 @@ class TripsController < ApplicationController
 
   def index
     head :unauthorized unless current_user.admin?
-    @trips = Trip.all
+    @trips = filter_trip params
     render json: @trips
   end
 
@@ -36,6 +36,19 @@ class TripsController < ApplicationController
     @trip.destroy
     head :no_content
   end
+
+  protected
+
+    def filter_trip params
+      @trips = Trip.all
+      if params[:q]
+        @trips = @trips.destination(params[:q][:destination]) if params[:q][:destination]
+        @trips = @trips.comment(params[:q][:comment]) if params[:q][:comment]
+        @trips = @trips.starts_after(params[:q][:starts_after]) if params[:q][:starts_after]
+        @trips = @trips.ends_before(params[:q][:ends_before]) if params[:q][:ends_before]
+      end
+      @trips
+    end
 
   private
 
