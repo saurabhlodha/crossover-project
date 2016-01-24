@@ -13,7 +13,7 @@ class TripsControllerTest < ActionController::TestCase
 
   test "should create trip" do
     assert_difference('Trip.count') do
-      post :create, trip: { destination: @trip.destination, enddate: @trip.enddate, start_date: @trip.start_date }
+      post :create, trip: { destination: @trip.destination, end_date: @trip.end_date, start_date: @trip.start_date }
     end
 
     assert_response 201
@@ -25,7 +25,7 @@ class TripsControllerTest < ActionController::TestCase
   end
 
   test "should update trip" do
-    put :update, id: @trip, trip: { destination: @trip.destination, enddate: @trip.enddate, start_date: @trip.start_date }
+    put :update, id: @trip, trip: { destination: @trip.destination, end_date: @trip.end_date, start_date: @trip.start_date }
     assert_response 204
   end
 

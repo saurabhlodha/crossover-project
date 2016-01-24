@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
-  before_action :authenticate_with_token!, only: [:update, :destroy]
+  before_action :authenticate_with_token!, except: [:create]
   before_action :is_authorized?, except: [:create]
 
   def index
@@ -48,6 +48,6 @@ class UsersController < ApplicationController
     end
 
     def is_authorized?
-      head :unauthorized unless current_user.admin? || current_user.user_manager? (current_user == @user )
+      head :unauthorized unless current_user.admin? || current_user.user_manager? || (current_user == @user )
     end
 end
