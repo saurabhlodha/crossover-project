@@ -1,6 +1,5 @@
 ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../../config/environment', __FILE__)
-require "capybara/rspec"
 require 'shoulda-matchers'
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
