@@ -1,0 +1,17 @@
+Edit Trip
+
+<form>
+  <div class="form-group">
+    <label>Destination</label>
+    {{validated-input type="text" name="destination" value=model.destination placeholder="Destination" errors=errors.model.destination }}
+  </div>
+  <div class="form-group">
+    <label>Start Date</label>
+    {{validated-input type="date" name="start_date" value=model.start_date placeholder="Start Date" errors=errors.model.start_date }}
+  </div>
+  <div class="form-group">
+    <label>End Date</label>
+    {{validated-input type="date" name="end_date" value=model.end_date placeholder="End Date" errors=errors.model.end_date }}
+  </div>
+  <button {{action "updateTrip" model.id}} class="btn btn-primary">Submit</button>
+</form>

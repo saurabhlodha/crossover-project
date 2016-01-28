@@ -1,0 +1,24 @@
+<form class="col-sm-8 col-sm-offset-2" {{action 'signUp' on='submit'}}>
+  <div class="form-group">
+    <label>Email</label>
+    {{validated-input type="text" value=email placeholder="Email" errors=errors.email }}
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    {{input id='password' class="form-control" placeholder='Enter Password' type='password' value=password}}
+  </div>
+  <div class="form-group">
+    <label>Role</label>
+    {{#x-select value=role class="form-control" }}
+      {{#x-option value="regular"}}Regular{{/x-option}}
+      {{#x-option value="manager"}}Manager{{/x-option}}
+      {{#x-option value="admin"}}Admin{{/x-option}}
+    {{/x-select}}
+  </div>
+  <div class="form-group">
+    {{#if errorMessage}}
+      <p>{{errorMessage}}</p>
+    {{/if}}
+  </div>
+  <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>

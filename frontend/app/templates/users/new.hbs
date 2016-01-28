@@ -1,0 +1,21 @@
+New User
+
+<form>
+  <div class="form-group">
+    <label>Email</label>
+    {{input class="form-control" name="email" type="text" value=email placeholder="Email" }}
+  </div>
+  <div class="form-group">
+    <label>Role</label>
+    {{#x-select value=access_level class="form-control" }}
+      {{#x-option value="user"}}Regular{{/x-option}}
+      {{#x-option value="user_manager"}}Manager{{/x-option}}
+      {{#x-option value="admin"}}Admin{{/x-option}}
+    {{/x-select}}
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    {{input class="form-control" name="password" type="password" value=password placeholder="Password" }}
+  </div>
+  <button {{action "createUser" id}} class="btn btn-primary">Submit</button>
+</form>
