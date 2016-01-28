@@ -6,10 +6,10 @@ class SessionsController < ApplicationController
 
     user          = user_email.present? && User.find_by(email: user_email)
 
-    if user.valid_password? user_password
+    if user.present? && user.valid_password?(user_password)
       user.generate_auth_token
       user.save
-      render json: user, status: 200
+      render json: user, show_auth_token: true, status: 200
     else
       render json: { errors: 'Invalid email or password' }, status: 422
     end
