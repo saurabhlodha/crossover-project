@@ -14,6 +14,7 @@
       <th>Start Date</th>
       <th>End Date</th>
       <th>Comment</th>
+      <th>User</th>
       <th>Days</th>
       <th></th>
       <th></th>
@@ -27,6 +28,7 @@
       <td>{{trip.start_date}} </td>
       <td>{{trip.end_date}} </td>
       <td>{{trip.comment}} </td>
+      <td>{{trip.user.email}}</td>
       <td>{{trip.live_days}}</td>
       <td>{{#link-to "trips.show" trip.id class="btn btn-xs btn-primary"}}Show{{/link-to}}</td>
       <td>{{#link-to "trips.edit" trip.id class="btn btn-xs btn-info"}}Edit{{/link-to}}</td>

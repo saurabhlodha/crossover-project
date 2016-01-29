@@ -5,7 +5,7 @@ export default DS.Model.extend({
   comment  : DS.attr('string'),
   start_date  : DS.attr('date'),
   end_date  : DS.attr('date'),
-  user  : DS.belongsTo('user'),
+  user_id  : DS.attr('string'),
 
   live_days: function() {
     var start = this.get('start_date');
@@ -15,5 +15,10 @@ export default DS.Model.extend({
     }
     var days = Math.round((start-now)/(1000*60*60*24));
     return days;
-  }.property('start_date')
+  }.property('start_date'),
+  
+  user: function() {
+    return this.store.find('user',this.get('user_id'));
+  }.property('user_id')
+
 });

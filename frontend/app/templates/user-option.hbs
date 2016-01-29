@@ -1,0 +1,9 @@
+  <div class="form-group">
+    <label>Users</label>
+    {{#x-select class="form-control" value=user_id }}
+      {{#x-option}}--{{/x-option}}
+      {{#each model as |user|}}
+        {{#x-option value=user.id}}{{user.email}}{{/x-option}}
+       {{/each}}
+    {{/x-select}}
+  </div>

@@ -1,0 +1,29 @@
+<div id="print_page">
+  <h3>Trips</h3>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Destination</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Comment</th>
+        <th>User</th>
+        <th>Days to start</th>
+      </tr>
+    </thead>
+    <tbody class="searchable">
+    {{#each model.upcoming_trips as |trip|}}
+      <tr>
+        <td>{{trip.destination}}</td>
+        <td>{{trip.start_date}} </td>
+        <td>{{trip.end_date}} </td>
+        <td>{{trip.comment}} </td>
+        <td>{{trip.user.email}}</td>
+        <td>{{trip.live_days}}</td>
+      </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</div>
+<button id="print_button">Print this page</button>

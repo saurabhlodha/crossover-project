@@ -18,6 +18,7 @@ Router.map(function() {
     this.route('show', {path: '/show/:trip_id'});
   });
   this.route('signup');
+  this.route('travelplan');
 });
 
 export default Router;

@@ -3,6 +3,18 @@ import TripValidations from 'frontend/mixins/validations/trip';
 
 export default Ember.Controller.extend(TripValidations, {
 
+  start_date: Ember.computed(function () {
+    var start_date = this.get('model.start_date');
+    start_date = new Date(start_date);
+    return moment(start_date).format("YYYY-MM-DD");
+  }),
+
+  end_date: Ember.computed(function () {
+    var end_date = this.get('model.end_date');
+    end_date = new Date(end_date);
+    return moment(end_date).format("YYYY-MM-DD");
+  }),
+
   actions : {
 
     updateTrip(id) {

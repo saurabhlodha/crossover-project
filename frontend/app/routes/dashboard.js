@@ -41,7 +41,6 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     };
 
     if(isAdmin) {
-      console.log('Inside admin');
       this.render("trips-nav", { outlet: "trips-nav", into: "dashboard" });
       this.render("users-nav", { outlet: "users-nav", into: "dashboard" });
     }
