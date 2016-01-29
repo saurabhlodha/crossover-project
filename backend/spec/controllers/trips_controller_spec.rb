@@ -31,7 +31,7 @@ RSpec.describe TripsController, type: :controller do
         trip = Trip.create! valid_attributes
         request.headers['Authorization'] =  trip.user.auth_token
         get :index, {}, valid_session
-        expect(response).to have_http_status(:unauthorized)
+        expect(response).to have_http_status(:success)
       end
     end
 
@@ -235,7 +235,7 @@ RSpec.describe TripsController, type: :controller do
         trip = Trip.create! valid_attributes
         request.headers['Authorization'] = manager.auth_token
         get :index, {}, valid_session
-        expect(response).to have_http_status(:unauthorized)
+        expect(response).to have_http_status(:success)
       end
     end
 

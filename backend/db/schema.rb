@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160122204035) do
+ActiveRecord::Schema.define(version: 20160129174113) do
 
   create_table "trips", force: :cascade do |t|
     t.string   "destination", limit: 255
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160122204035) do
     t.datetime "updated_at",                                      null: false
     t.string   "auth_token",             limit: 255, default: ""
     t.integer  "access_level",           limit: 4,   default: 0
+    t.datetime "expires_at"
   end
 
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree

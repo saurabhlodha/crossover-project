@@ -16,6 +16,8 @@ RSpec.describe Trip, type: :model do
   it { expect(trip).to be_valid }
   it { expect(trip).to belong_to(:user) }
   it { expect(trip).to validate_presence_of :user }
+  it { expect(trip).to validate_presence_of :start_date }
+  it { expect(trip).to validate_presence_of :end_date }
 
   it 'returns a sorted array of results that match' do
     manali = FactoryGirl.create(:manali)

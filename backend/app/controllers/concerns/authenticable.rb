@@ -9,7 +9,7 @@ module Authenticable
   end
 
   def user_signed_in?
-    current_user.present?
+    current_user.present? && current_user.expires_at > DateTime.now
   end
 
 end 

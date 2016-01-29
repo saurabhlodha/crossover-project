@@ -1,10 +1,9 @@
 class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :update, :destroy]
   before_action :authenticate_with_token!
-  before_action :is_authorized?, except: [:create]
+  before_action :is_authorized?, except: [:create, :index]
 
   def index
-    head :unauthorized unless current_user.admin?
     @trips = filter_trip params
     render json: @trips
   end
@@ -40,12 +39,14 @@ class TripsController < ApplicationController
   protected
 
     def filter_trip params
-      trips = Trip.all
+      trips = current_user.admin? ? Trip.all : current_user.trips
       if params[:q]
         trips = trips.destination(params[:q][:destination]) if params[:q][:destination]
         trips = trips.comment(params[:q][:comment]) if params[:q][:comment]
         trips = trips.starts_after(params[:q][:starts_after]) if params[:q][:starts_after]
         trips = trips.ends_before(params[:q][:ends_before]) if params[:q][:ends_before]
+        date  = DateTime.now
+        trips = trips.where("start_date > ?",date) if params[:q][:next] and params[:q][:next] == "true"
       end
       trips
     end

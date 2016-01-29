@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
   before_action :authenticate_with_token!, except: [:create]
-  before_action :is_authorized?, except: [:create]
+  before_action :is_authorized?, except: [:create, :index]
 
   def index
-    head :unauthorized if current_user.user?
-    @users = User.all
+    if current_user.user?
+      @users = User.where('id = ?',current_user.id)
+    else
+      @users = User.all
+    end
     render json: @users
   end
 
