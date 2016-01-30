@@ -1,9 +1,26 @@
 {{outlet}}
 <br/><br/>
 
-<div class="input-group"> <span class="input-group-addon">Filter</span>
+<div class="input-group"> <span class="input-group-addon">Filter </span>
   <input id="filter" type="text" class="form-control" placeholder="Filter Trips">
 </div>
+
+<div class="input-group">
+  <span class="input-group-addon">After </span>
+  <input id="after_start_date" name="q[starts_after]" type="date" class="form-control">
+  <span class="input-group-btn">
+    <button class="btn btn-default" type="button" id="afterStartDate">Search</button>
+  </span>
+</div>
+
+<div class="input-group">
+  <span class="input-group-addon">Before</span>
+  <input id="before_end_date" name="q[ends_before]" type="date" class="form-control">
+  <span class="input-group-btn">
+    <button class="btn btn-default" type="button" id="beforeEndDate">Search</button>
+  </span>
+</div>
+
 
 <h3>Trips</h3>
 
@@ -25,8 +42,8 @@
   {{#each model as |trip|}}
     <tr>
       <td>{{trip.destination}}</td>
-      <td>{{trip.start_date}} </td>
-      <td>{{trip.end_date}} </td>
+      <td class="start_date">{{trip.start_date}} </td>
+      <td class="end_date">{{trip.end_date}} </td>
       <td>{{trip.comment}} </td>
       <td>{{trip.user.email}}</td>
       <td>{{trip.live_days}}</td>
@@ -37,3 +54,20 @@
   {{/each}}
   </tbody>
 </table>
+
+<style>
+.start_date_hide {
+  display: none;
+}
+.search_hide {
+  display: none;
+}
+.end_date_hide {
+  display: none;
+}
+.login-form .error {
+    color: #D8000C;
+    font-size: 11px;
+    margin: 10px;
+}
+</style>
