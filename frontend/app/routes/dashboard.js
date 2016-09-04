@@ -15,7 +15,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   afterModel() {
     console.log('transition complete');
     this.store.unloadAll('user');
-    this.store.unloadAll('trip');
+    this.store.unloadAll('request');
     var access_level = this.get('session.data.authenticated.user');
     // console.log(access_level);
   },
@@ -26,14 +26,14 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     if (access_level) {
       access_level = access_level.toLowerCase();
       isRegular = access_level == 'user';
-      isManager = access_level == 'user_manager';
+      isManager = access_level == 'agent';
       isAdmin   = access_level == 'admin';
     }
 
     this.render();
 
     if(isRegular) {
-      this.render("trips-nav", { outlet: "trips-nav", into: "dashboard" });
+      this.render("requests-nav", { outlet: "requests-nav", into: "dashboard" });
     };
 
     if(isManager) {
@@ -41,7 +41,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     };
 
     if(isAdmin) {
-      this.render("trips-nav", { outlet: "trips-nav", into: "dashboard" });
+      this.render("requests-nav", { outlet: "requests-nav", into: "dashboard" });
       this.render("users-nav", { outlet: "users-nav", into: "dashboard" });
     }
   }

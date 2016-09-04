@@ -12,10 +12,10 @@ Router.map(function() {
     this.route('new');
     this.route('edit', {path: '/edit/:user_id'});
   });
-  this.resource('trips', function() {
+  this.resource('requests', function() {
     this.route('new');
-    this.route('edit', {path: '/edit/:trip_id'});
-    this.route('show', {path: '/show/:trip_id'});
+    this.route('edit', {path: '/edit/:request_id'});
+    this.route('show', {path: '/show/:request_id'});
   });
   this.route('signup');
   this.route('travelplan');

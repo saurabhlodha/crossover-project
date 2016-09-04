@@ -4,19 +4,19 @@ default: &default
   port: 3306
   encoding: utf8
   pool: 5
-  username: root
-  password: <%= ENV['PROJECT-SAURABH-LODHA_DATABASE_PASSWORD'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
-  database: travel-planner_development
+  database: crossover_development
 
 test:
   <<: *default
-  database: travel-planner_test
+  database: crossover_test
 
 production:
   <<: *default
-  database: travel-planner_production
-  username: project-saurabh-lodha
-  password: <%= ENV['PROJECT-SAURABH-LODHA_DATABASE_PASSWORD'] %>
+  database: crossover_production
+  username: <%= ENV['CROSSOVER_DATABASE_USER'] %>
+  password: <%= ENV['CROSSOVER_DATABASE_PASSWORD'] %>

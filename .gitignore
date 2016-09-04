@@ -16,6 +16,7 @@
 */log/*
 !/log/.keep
 /tmp
+.env
 backend/.ruby-gemset
 backend/.ruby-version
 *keep

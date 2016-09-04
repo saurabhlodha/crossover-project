@@ -1,0 +1,40 @@
+{{outlet}}
+<br/><br/>
+
+<div class="input-group"> <span class="input-group-addon">Filter </span>
+  <input id="filter" type="text" class="form-control" placeholder="Filter Tickets">
+</div>
+
+<div class="input-group">
+  <span class="input-group-addon">Description </span>
+  <input id="after_start_date" name="q[description]" type="text" class="form-control">
+</div>
+
+<h3>Tickets</h3>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Request Id</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody class="searchable">
+  {{#each model as |ticket|}}
+    <tr>
+      <td>{{ticket.request_id}} </td>
+      <td>{{ticket.description}}</td>
+      <td>{{ticket.status}} </td>
+      <td>{{ticket.user.email}}</td>
+      <td>{{#link-to "requests.show" ticket.id class="btn btn-xs btn-primary"}}Show{{/link-to}}</td>
+      <td>{{#link-to "requests.edit" ticket.id class="btn btn-xs btn-info"}}Edit{{/link-to}}</td>
+      <td><button {{ action "deleteTicket" ticket.id }} class="btn btn-xs btn-danger">Delete</button></td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>

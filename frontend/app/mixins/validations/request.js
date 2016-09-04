@@ -4,15 +4,16 @@ import EmberValidations from 'ember-validations';
 export default Ember.Mixin.create(EmberValidations, {
 
   validations : {
-    'model.destination': {
+    'model.description': {
       presence: true
     },
-    'model.start_date': {
+    'model.status': {
+      presence: true
+    },
+    'model.request_id': {
       presence: true    },
-    'model.end_date': {
+    'model.user_id': {
       presence: true
     }
   }
-
-
 });

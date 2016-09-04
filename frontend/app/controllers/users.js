@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
         user.deleteRecord();
         user.save();
         self.transitionToRoute('users');
-      })
+      });
     }
   }
 });

@@ -19,7 +19,7 @@ RSpec.describe User, type: :model do
   end
 
   it { expect(user).to be_valid }
-  it { should have_many(:trips) }
+  it { should have_many(:requests) }
   it { should validate_uniqueness_of(:auth_token) }
 
 end

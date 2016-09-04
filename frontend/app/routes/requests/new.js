@@ -12,7 +12,7 @@ export default Ember.Route.extend({
     }
     this.render();
     if(isAdmin) {
-      this.render("user-option", { outlet: "user-option", into: "trips.new" });
+      this.render("user-option", { outlet: "user-option", into: "requests.new" });
     }
   },
   model() {

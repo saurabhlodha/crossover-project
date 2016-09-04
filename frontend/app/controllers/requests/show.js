@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
     if ((start == undefined) || (start < now)){
       return 0;
     }
-    var days = Math.round((start-now)/(1000*60*60*24))
+    var days = Math.round((start-now)/(1000*60*60*24));
     return days;
   }),
 

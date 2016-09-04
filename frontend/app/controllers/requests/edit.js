@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import TripValidations from 'frontend/mixins/validations/trip';
+import RequestValidations from 'frontend/mixins/validations/request';
 
-export default Ember.Controller.extend(TripValidations, {
+export default Ember.Controller.extend(RequestValidations, {
 
   start_date: Ember.computed(function () {
     var start_date = this.get('model.start_date');
@@ -17,32 +17,26 @@ export default Ember.Controller.extend(TripValidations, {
 
   actions : {
 
-    updateTrip(id) {
+    updateTicket(id) {
       var self = this;
 
-      var destination = this.get('model.destination');
-      var comment = this.get('model.comment');
-      var start_date = this.get('model.start_date');
-      var end_date = this.get('model.end_date');
+      var description = this.get('model.destination');
 
       // // run validations
       this.validate().then(() => {
         // find the record
-        this.store.findRecord('trip', id).then(function(trip) {
+        this.store.findRecord('request', id).then(function(request) {
 
-          // update the trip
-          trip.set('destination', destination);
-          trip.set('comment', comment);
-          trip.set('start_date', start_date);
-          trip.set('end_date', end_date)
+          // update the ticket
+          request.set('description', description);
 
           // save on the server
-          trip.save().then(() => {
+          request.save().then(() => {
             // clear fields
-            self.setProperties({destination: '', comment: '', start_date: '', end_date: ''});
+            self.setProperties({description: '', request_id: '', status: ''});
 
             // redirect to index
-            self.transitionToRoute('trips');
+            self.transitionToRoute('requests');
           }, ()=> {
 
             alert('Validation failed on server. Please try again.');
@@ -61,7 +55,7 @@ export default Ember.Controller.extend(TripValidations, {
 
       }).catch(() => {
 
-        console.log('exception in trips : edit : updateTrip ');
+        console.log('exception in requests : edit : updateTicket ');
 
       });
     }

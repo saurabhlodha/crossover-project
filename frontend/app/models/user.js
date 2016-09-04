@@ -5,7 +5,7 @@ export default DS.Model.extend({
   access_level      : DS.attr('string'),
   password  : DS.attr('string'),
   // trips : DS.hasMany('trip')
-  upcoming_trips: function() {
-    return this.store.query('trip', { q: { next: true } })
-  }.property('id')
+  // upcoming_trips: function() {
+  //   return this.store.query('trip', { q: { next: true } })
+  // }.property('id')
 });

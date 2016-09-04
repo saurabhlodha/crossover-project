@@ -51,6 +51,6 @@ class UsersController < ApplicationController
     end
 
     def is_authorized?
-      head :unauthorized unless current_user.admin? || current_user.user_manager? || (current_user == @user )
+      head :unauthorized unless current_user.admin? || current_user.agent? || (current_user == @user )
     end
 end

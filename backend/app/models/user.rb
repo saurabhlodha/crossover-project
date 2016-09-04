@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   before_create :generate_auth_token
-  enum access_level: [:user, :user_manager, :admin]
+  enum access_level: [:user, :agent, :admin] # :user_manager
   validates :auth_token, uniqueness: true
-  has_many :trips
+  has_many :requests
 
   def generate_auth_token
     begin
