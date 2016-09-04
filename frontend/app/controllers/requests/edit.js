@@ -20,7 +20,8 @@ export default Ember.Controller.extend(RequestValidations, {
     updateTicket(id) {
       var self = this;
 
-      var description = this.get('model.destination');
+      var description = this.get('model.description');
+      var status = this.get('model.status');
 
       // // run validations
       this.validate().then(() => {
@@ -29,6 +30,7 @@ export default Ember.Controller.extend(RequestValidations, {
 
           // update the ticket
           request.set('description', description);
+          request.set('status', status);
 
           // save on the server
           request.save().then(() => {

@@ -1,9 +1,18 @@
-.start_date_hide {
-  display: none;
-}
 .search_hide {
   display: none;
 }
-.end_date_hide {
+.status_filter_hide {
   display: none;
+}
+.open {
+	color: red;
+	text-transform: uppercase;
+}
+.processing {
+	color: orange;
+	text-transform: uppercase;
+}
+.closed {
+	color: green;
+	text-transform: uppercase;
 }

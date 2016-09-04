@@ -37,7 +37,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     };
 
     if(isManager) {
-      this.render("users-nav", { outlet: "users-nav", into: "dashboard" });
+      this.render("requests-nav", { outlet: "users-nav", into: "dashboard" });
     };
 
     if(isAdmin) {

@@ -1,11 +1,12 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :update, :destroy]
+  before_action :authenticate_with_token!
+  before_action :is_authorized?, except: [:create, :index, :show]
 
   # GET /requests
   # GET /requests.json
   def index
-    @requests = Request.all
-
+    @requests = filter_ticket params
     render json: @requests
   end
 
@@ -47,6 +48,17 @@ class RequestsController < ApplicationController
     head :no_content
   end
 
+  protected
+
+    def filter_ticket params
+      tickets = (current_user.admin? || current_user.agent?) ? Request.all : current_user.requests
+      if params[:q]
+        tickets = tickets.description(params[:q][:destination]) if params[:q][:destination]
+        tickets = tickets.status(params[:q][:comment]) if params[:q][:comment]
+      end
+      tickets
+    end
+
   private
 
     def set_request
@@ -55,5 +67,9 @@ class RequestsController < ApplicationController
 
     def request_params
       params.require(:request).permit(:request_id, :description, :status, :user_id)
+    end
+
+    def is_authorized?
+      head :unauthorized unless current_user.admin? || current_user.agent?
     end
 end

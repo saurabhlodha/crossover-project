@@ -6,9 +6,16 @@
 </div>
 
 <div class="input-group">
-  <span class="input-group-addon">Description </span>
-  <input id="after_start_date" name="q[description]" type="text" class="form-control">
+  <span class="input-group-addon">Status </span>
+  <select id="sort_by_status" class="form-control">
+    <option value="all">--</option>
+    <option value="open">Open tickets</option>
+    <option value="processing">Tickets in progress</option>
+    <option value="closed">Closed tickets</option>
+  </select>
 </div>
+
+
 
 <h3>Tickets</h3>
 
@@ -29,7 +36,7 @@
     <tr>
       <td>{{ticket.request_id}} </td>
       <td>{{ticket.description}}</td>
-      <td>{{ticket.status}} </td>
+      <td id="status" class="{{ticket.status}}">{{ticket.status}} </td>
       <td>{{ticket.user.email}}</td>
       <td>{{#link-to "requests.show" ticket.id class="btn btn-xs btn-primary"}}Show{{/link-to}}</td>
       <td>{{#link-to "requests.edit" ticket.id class="btn btn-xs btn-info"}}Edit{{/link-to}}</td>
