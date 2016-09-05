@@ -15,9 +15,6 @@ $(document).ready(function () {
         var status = $(this).val();
         $('.searchable tr').addClass("status_filter_hide");
         $('.searchable tr #status').filter(function () {
-            console.log(status);
-            console.log($(this).text());
-            console.log(status == ($(this).text().trim()));
             return (status == ($(this).text().trim()));
         }).parent().removeClass("status_filter_hide");
 

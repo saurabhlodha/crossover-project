@@ -18,7 +18,7 @@ FactoryGirl.define do
     email                 { Faker::Internet.email }
     password              'testing123'
     password_confirmation 'testing123'
-    access_level					:user_manager
+    access_level					:agent
   end
 
   factory :admin, class: User do

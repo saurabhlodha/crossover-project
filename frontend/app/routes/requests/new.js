@@ -11,7 +11,7 @@ export default Ember.Route.extend({
       isAdmin   = access_level == 'admin';
     }
     this.render();
-    if(isAdmin) {
+    if(true) {
       this.render("user-option", { outlet: "user-option", into: "requests.new" });
     }
   },
