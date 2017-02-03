@@ -19,4 +19,5 @@
 .env
 backend/.ruby-gemset
 backend/.ruby-version
+backend/tmp/*
 *keep

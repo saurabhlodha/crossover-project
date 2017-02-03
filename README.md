@@ -7,7 +7,7 @@ To start ember server - ember s
 
 2. Instruction to create and initialize the database
 
-Rake commands of rails which would create and migrate the tables are below-
+Rake commands of rails which would create and migrate the tables are below -
 
-rake db:create
-rake db:migrate
+Create Database - rake db:create
+Migrate the tables - rake db:migrate
